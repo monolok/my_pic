@@ -1,24 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Images</h1>
+<h3 class="text-center">Images for Sale</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
     <% @images.each do |image| %>
-      <tr>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= render "image_row", image: image, order_item: @order_item %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <br>
 
