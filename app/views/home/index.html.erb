@@ -1,32 +1,43 @@
-<body class="bg-index">
 
-	<div class="container-fluid bg">
+	<div class="row bg">
 		<div class="col-xs-offset-2 col-xs-8 col-xs-offset-2">
-			<h1>Own a Pic</h1>
-			<div class="row">
-				<p>Explanation about My_pic how it works, become owner of a Cool pic etc ...</p>
+			<div class="row lead">
+				PicMe sells <div id="m" style="display: inline;">copyright ownership</div> of urban photograph to anybody who wishes to take over one or many photograph that you believe has potential to your conveniance.
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-offset-2 col-xs-8 col-xs-offset-2">
-				<h3>How it works ?<i class="fa fa-cog fa-spin fa-3x"></i></h3>
-				<div class="col-sm-6 border">
-					<i class="fa fa-search fa-3x"></i>
-				</div>
-				<div class="col-sm-6 border">
-					<i class="fa fa-cart-plus fa-3x"></i>
-				</div>
-				<div class="col-sm-6 border">
-					<i class="fa fa-certificate fa-3x"></i>
-					<i class="fa fa-copyright fa-3x"></i>
-					<i class="fa fa-check-circle fa-3x"></i>
-				</div>
-				<div class="col-sm-6 border">
-					<i class="fa fa-child fa-3x"></i>
-					<i class="fa fa-file-image-o fa-3x"></i>
-				</div>
+		<div class="col-xs-offset-2 col-xs-8 col-xs-offset-2">
+			<div class="row">
+				<h3 class="center"><strong>How it works ?</strong></h3>
+				<table class="ex1">
+				  <tr>
+				    <td id="browse" class="pointer">
+				    	<%=link_to images_path do%>
+				    		<i class="fa fa-search fa-5x" data-toggle="tooltip" data-placement="top" title="Start browsing pictures!"></i>
+				    	<%end%>
+				    </td>
+				    <td id="pic"><i class="fa fa-file-image-o fa-3x" data-toggle="tooltip" data-placement="top" title="Check the pic!"></i></td>
+				  </tr>
+				  <tr>
+				    <td id="cart"><i class="fa fa-cart-plus fa-3x" data-toggle="tooltip" data-placement="top" title="Add to your cart!"></i></td>
+				    <td id="copy"><i class="fa fa-copyright fa-3x" data-toggle="tooltip" data-placement="top" title="Own the pic !"></i></td>
+				  </tr>
+				</table>	
 			</div>						
 		</div>
 	</div>
 
-</body>
+	<footer>
+	<div class="wide_wrapper">
+	<div id="logo">
+	<div class="pad-left-footer"><i class="fa fa-copyright"></i></div>
+	<div class="pad-left-footer">PicMe</div>
+	<div class="pad-left-footer"><%= Time.now.year %></div>
+	</div>
+	<nav class="navigation">
+	<a href="#" data-toggle="tooltip" data-placement="top" title="FAQ" target="_blank"><i class="fa fa-question fa-2x"></i></a>
+	<a onclick="myFace()" data-toggle="tooltip" data-placement="top" title="Be friendly !" target="_blank"><i class="fa fa-facebook-square fa-2x pointer"></i></a>
+	<a href="https://monolok.github.io/online" data-toggle="tooltip" data-placement="top" title="Hire me !" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+	<a href="mailto:antoinebe35@gmail.com" data-toggle="tooltip" data-placement="top" title="Say hi !"><i class="fa fa-paper-plane fa-2x"></i></a>
+	</nav>
+	</div>
+	</footer>

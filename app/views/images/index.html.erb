@@ -1,41 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h3 class="text-center">Images for Sale</h3>
-
 <div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
-    <% @images.each do |image| %>
-      <%= render "image_row", image: image, order_item: @order_item %>
-    <% end %>
-  </div>
+  <% @images.each do |image| %>
+    <%= render "image_row", image: image, order_item: @order_item %>
+  <% end %>
 </div>
 
 <br>
 
 <%= link_to 'New Image', new_image_path %>
-
-<div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
-
-<%= form_tag search_images_path, method: :get, class: "", role: "search" do %>
-<%= text_field_tag :search, params[:search], class: "block form-control" %>
-<button>
-<i class="fa fa-search fa-1x"></i>
-</button>
-<% end %>
-
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-</div>

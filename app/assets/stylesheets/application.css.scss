@@ -18,3 +18,85 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.border {
+	border-style: solid;
+	border-color: black;
+}
+
+.bg-index {
+    background: url(1.jpg) #353433;
+    background-size: 25%;
+    font-family: 'Open Sans', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+table.ex1 {
+    border-collapse: separate;
+    border-spacing: 10px 50px;
+    margin-left: auto;
+	margin-right: auto;
+}
+
+.center {
+	text-align: center;
+}
+
+td {
+	padding: 15px;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+#search_box {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+button, input, optgroup, select, textarea {
+    color: black;
+    font: none;
+    margin: 0px;
+}
+/*NAV BOTTOM*/
+
+footer {
+clear: both;
+width: 100%;
+padding: 1rem 0px;
+border-top: 1px solid #E9E9E9;
+right: 0px;
+left: 0px;
+z-index: 1030;
+}
+.wide_wrapper {
+width: 95%;
+margin: 0px auto;
+max-width: 1440px;
+}
+footer #logo {
+width: 40px;
+display: inline-flex;
+float: left;
+}
+.navigation {
+float: right;
+padding: 0rem 2.5% 0px 0px;
+}
+footer .navigation {
+float: right;
+}
+footer .navigation a {
+color: white;
+margin-left: 1.5rem;
+line-height: 1;
+display: inline-block;
+}
+.pad-left-footer {
+padding-left: 18%;
+}
+
+
