@@ -19,32 +19,32 @@
 $(function () {
 $('[data-toggle="tooltip"]').tooltip()
 
-$( "#browse" ).click(function() {
-	
-});
+// $( "#browse" ).hover(function() {
 
-$( "#pic" ).click(function() {
+// });
 
+$( "#pic" ).hover(function() {
+	$(this).css("cursor", "pointer");
 });
 
 $( "#cart" ).mouseover(function() {
+	$(this).css("cursor", "pointer");
 	$(".btn").css({
-		'font-size' : '30px',
-		'margin-left' : '-30%',
+		// 'font-size' : '30px',
 		'color' : 'red',
 	});
-	$(".bg").css("opacity", "0.4");
+	//$(".bg").css("opacity", "0.4");
 	$(this).mouseleave(function(){
 		$(".btn").css({
-			'font-size' : '',
-			'margin-left' : '',
+			// 'font-size' : '',
 			'color' : '',
 		});
-		$(".bg").css("opacity", "1");
+		//$(".bg").css("opacity", "1");
 	})
 });
 
 $( "#copy" ).mouseover(function() {
+	$(this).css("cursor", "pointer");
 	$("#m").css({
 		'background-color' : '#FCF8E3',
 		'padding' : '0.2em',

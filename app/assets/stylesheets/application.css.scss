@@ -18,6 +18,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+h1 {
+    display: inline-block;
+}
+
 .border {
 	border-style: solid;
 	border-color: black;

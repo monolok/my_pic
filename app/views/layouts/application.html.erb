@@ -11,6 +11,9 @@
 	    <div class="row">
 	      <div class="col-xs-4">
 	        <h1><%= link_to "PicMe", root_path %></h1>
+			<%= link_to new_image_path do%>
+				<i class="fa fa-plus-square fa-2x"></i>
+			<%end%>	        
 	      </div>
 	      <div class="col-xs-4" id="search_box">
 	      	<%= form_tag search_images_path, method: :get, class: "", role: "search" do %>
@@ -18,7 +21,7 @@
 				<button>
 					<i class="fa fa-search fa-1x"></i>
 				</button>
-			<% end %>
+			<% end %>			
 	      </div>
 	      <div class="col-xs-4 text-right">
 	        <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
