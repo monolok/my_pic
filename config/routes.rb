@@ -13,7 +13,9 @@ root 'home#index'
   resources :images do 
     collection do 
       get 'search'
+      get 'img/:id', to: "images#_show_image"
     end
+
   end
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]

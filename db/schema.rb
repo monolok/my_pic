@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310161734) do
+ActiveRecord::Schema.define(version: 20150315234004) do
 
   create_table "images", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20150310161734) do
     t.datetime "updated_at",                          null: false
     t.decimal  "price",      precision: 12, scale: 3
     t.boolean  "active"
+    t.binary   "data"
+    t.string   "filename"
+    t.string   "mime_type"
   end
 
   create_table "order_items", force: :cascade do |t|

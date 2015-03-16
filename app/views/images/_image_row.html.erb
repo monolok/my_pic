@@ -1,3 +1,5 @@
-<div class="well col-xs-offset-1 col-xs-4 col-xs-offset-1">
-	<%= link_to "IMG", image_path(image.id)%>
+<div class="col-xs-offset-1 col-xs-4 col-xs-offset-1">
+	<p><%= image.name%></p>
+	<%=link_to image_tag(url_for(:controller => 'images', :action => '_show_image', :id => image.id), class: "pad-bot1 img-rounded"), image %> 
+	<i class="fa fa-copyright">available</i>
 </div>	
