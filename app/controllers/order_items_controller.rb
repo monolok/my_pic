@@ -32,6 +32,10 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
     @order_items = @order.order_items
 
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
+
 
   end
 private
