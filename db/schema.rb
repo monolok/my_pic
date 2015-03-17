@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316224701) do
+ActiveRecord::Schema.define(version: 20150317221913) do
 
   create_table "images", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150316224701) do
     t.binary   "data"
     t.string   "filename"
     t.string   "mime_type"
+    t.boolean  "in_cart"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -31,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150316224701) do
     t.decimal  "total_price", precision: 12, scale: 3
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.boolean  "in_cart"
   end
 
   create_table "order_statuses", force: :cascade do |t|

@@ -7,7 +7,13 @@
         <div class="input-group">
           <div class="input-group-btn">
             <%= f.hidden_field :image_id, value: image.id %>
-            <%= f.submit "Add to Cart", class: "btn btn-success btn-lg btn-block", id: "btn-buy" %>
+            <% if image.in_cart == true%>
+              <div class="btn btn-success btn-lg btn-block" id="btn-buy" disabled="disabled">
+                In cart
+              </div>
+            <%else%>
+              <%= f.submit "Add to Cart", class: "btn btn-success btn-lg btn-block", id: "btn-buy" %>
+            <%end%>
           </div>
         </div>
       <% end %>
