@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318161738) do
+ActiveRecord::Schema.define(version: 20150318180249) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 20150318161738) do
     t.datetime "updated_at",                          null: false
     t.decimal  "price",      precision: 12, scale: 3
     t.boolean  "active"
-    t.binary   "data"
     t.string   "filename"
     t.string   "mime_type"
     t.boolean  "in_cart"
+    t.string   "data"
   end
 
   create_table "order_items", force: :cascade do |t|

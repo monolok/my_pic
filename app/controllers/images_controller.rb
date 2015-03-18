@@ -22,9 +22,9 @@ class ImagesController < ApplicationController
     send_data(Base64.decode64(@image.data), :type => @image.mime_type, :filename => @image.filename, :disposition => 'inline')
   end
   # GET /images/new
-  def new
-    @image = Image.new
-  end
+  # def new
+  #   @image = Image.new
+  # end
 
   # GET /images/1/edit
   def edit
@@ -32,25 +32,25 @@ class ImagesController < ApplicationController
 
   # POST /images
   # POST /images.json
-  def create
-    @image = Image.new(params['data']) do |t|
-        t.data = Base64.encode64(params[:image][:data].read)
-        t.filename = params[:image][:data].original_filename
-        t.mime_type = params[:image][:data].content_type
-    end
-    @image.name = image_params['name']
-    @image.price = image_params['price']
-    @image.active = true
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def create
+  #   @image = Image.new(params['data']) do |t|
+  #       t.data = Base64.encode64(params[:image][:data].read)
+  #       t.filename = params[:image][:data].original_filename
+  #       t.mime_type = params[:image][:data].content_type
+  #   end
+  #   @image.name = image_params['name']
+  #   @image.price = image_params['price']
+  #   @image.active = true
+  #   respond_to do |format|
+  #     if @image.save
+  #       format.html { redirect_to @image, notice: 'Image was successfully created.' }
+  #       format.json { render :show, status: :created, location: @image }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @image.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
