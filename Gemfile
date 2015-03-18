@@ -27,6 +27,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
 gem 'stripe'
+gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 
 # Use ActiveModel has_secure_password
