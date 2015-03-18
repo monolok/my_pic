@@ -1,1 +1,7 @@
-<p>search</p>
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <% @images.each do |image| %>
+    <%= render "image_row", image: image, order_item: @order_item %>
+  <% end %>
+</div>

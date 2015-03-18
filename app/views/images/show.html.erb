@@ -11,7 +11,11 @@
       <%= image_tag(url_for(:controller => 'images', :action => '_show_image', :id => @image.id), id: "content-header-img", alt: "" ) %>
     </div>
 
-
+<%if @image.active == false %>
+  <section id="content-details" class="row clearfix" style="color: black;">
+    Image owned
+  </section>
+<%else%>
   <section id="content-details" class="row clearfix" style="color: black;">
     <article id="details-article" class="col-sm-8">
       <h1 id="article-title">Growth Hacking <span class="font-weight-light">Crash Course</span></h1>
@@ -41,5 +45,6 @@
   	  </ul>
   	</aside>
   </section>
+<%end%>
   </div>
 </body>

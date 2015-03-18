@@ -2,12 +2,16 @@
   <%= render "shopping_cart" %>
 </div>
 <div>
-	<script 
-		src="https://checkout.stripe.com/checkout.js" 
-		class="stripe-button"
-		data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-		data-description="Own your cart's pics !"
-		data-amount="<%=current_order.subtotal*100%>"
-		>
-	</script>
+	<% if @order_items.size != 0 %>
+		<%= form_tag carts_create_payment_path do%>
+			<script 
+				src="https://checkout.stripe.com/checkout.js" 
+				class="stripe-button"
+				data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+				data-description="Own your cart's pics !"
+				data-amount="<%=current_order.subtotal*100%>"
+				>
+			</script>
+		<%end%>
+	<%end%>
 </div>

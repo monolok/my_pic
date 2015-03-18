@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
+  post 'carts/create_payment'
+
+  get 'carts/create_payment'
+
 root 'home#index'
 
   resources :images do 
@@ -17,7 +21,7 @@ root 'home#index'
     end
 
   end
-  resource :cart, only: [:show]
+  resource :cart, only: [:show, :create_payment]
   resources :order_items, only: [:create, :update, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

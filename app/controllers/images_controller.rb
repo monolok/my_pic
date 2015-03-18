@@ -8,7 +8,8 @@ class ImagesController < ApplicationController
   end
 
   def search
-    
+    @images = Image.search(params[:search])
+    render action: :index
   end
 
   # GET /images/1
