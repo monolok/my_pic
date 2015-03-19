@@ -65,6 +65,33 @@ button, input, optgroup, select, textarea {
     font: none;
     margin: 0px;
 }
+
+.bg-cart {
+    background-color: transparent;
+    width: 500px;
+/*    height: 414px;*/
+    border: 4px dashed rgb(27, 26, 25);
+}
+
+.pad-cart {
+    padding: 5px;
+}
+
+.mark {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.mark-name {
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    text-align: center;
+    color: black;
+}
+
+.center {
+    text-align: center;
+}
 /*NAV BOTTOM*/
 
 footer {

@@ -32,6 +32,7 @@ class CartsController < ApplicationController
     @order.order_items.each do |oi|
     	oi.image.update(in_cart: false)
     	oi.image.update(active: false)
+    	oi.image.update(e_mail: params[:stripeEmail])
     	oi.destroy
     end
 

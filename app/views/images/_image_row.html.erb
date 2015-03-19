@@ -1,9 +1,13 @@
 <div class="col-xs-offset-1 col-xs-4 col-xs-offset-1">
-	<p><%= image.name%></p>
+	<div class="mark-name"><%= image.name%></div>
 	<%=link_to image_tag(url_for(:controller => 'images', :action => '_show_image', :id => image.id), class: "pad-bot1 img-rounded"), image %> 
 	<%if image.active == false%>
-		<i class="fa fa-copyright">NOT available</i>
+		<div class="text-muted mark">
+			<i class="fa fa-copyright"></i><strong>Copyright sold</strong>	
+		</div>
 	<%else%>
-		<i class="fa fa-copyright">available</i>
+		<div class="text-success mark">
+			<i class="fa fa-copyright"></i><strong>Copyright available</strong>	
+		</div>
 	<%end%>
 </div>	
