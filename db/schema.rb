@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318233729) do
+ActiveRecord::Schema.define(version: 20150320200606) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -48,15 +48,18 @@ ActiveRecord::Schema.define(version: 20150318233729) do
 
   create_table "images", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.decimal  "price",      precision: 12, scale: 3
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.decimal  "price",        precision: 12, scale: 3
     t.boolean  "active"
     t.string   "filename"
     t.string   "mime_type"
     t.boolean  "in_cart"
     t.string   "data"
     t.string   "e_mail"
+    t.string   "city"
+    t.text     "description1"
+    t.text     "description2"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -85,5 +88,12 @@ ActiveRecord::Schema.define(version: 20150318233729) do
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "image_id"
+  end
 
 end

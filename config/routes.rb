@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 root 'home#index'
 
-  resources :images do 
+  resources :images, except: [:new, :edit, :create, :update] do 
     collection do 
       get 'search'
       get 'img/:id', to: "images#_show_image"

@@ -28,6 +28,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
 gem 'stripe'
 gem 'devise'
+gem "cocoon"
 gem 'activeadmin', github: 'activeadmin'
 
 # Use ActiveModel has_secure_password
