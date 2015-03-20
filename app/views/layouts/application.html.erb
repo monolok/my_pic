@@ -9,24 +9,24 @@
 	<body class="bg-index">
 	  <div class="container">
 	    <div class="row">
-	      <div class="col-xs-4">
+	      <div class="col-xs-12 col-sm-4">
 	        <h1><%= link_to "PicMe", root_path %></h1>
-			<%= link_to admin_root_path do%>
-				<i class="fa fa-plus-square fa-2x"></i>
-			<%end%>
 			<%= link_to images_path do%>
 				<i class="fa fa-search fa-2x"></i>
-			<%end%>	        
+			<%end%>	 
+			<%= link_to admin_root_path do%>
+				<i class="fa fa-plus-square"></i>
+			<%end%>			       
 	      </div>
-	      <div class="col-xs-4" id="search_box">
+	      <div class="col-xs-6 col-sm-4" id="search_box">
 	      	<%= form_tag search_images_path, method: :get, class: "", role: "search" do %>
-				<%= text_field_tag :search, params[:search], class: "" %>
+				<%= text_field_tag :search, params[:search], class: "resp1" %>
 				<button>
 					<i class="fa fa-search fa-1x"></i>
 				</button>
 			<% end %>			
 	      </div>
-	      <div class="col-xs-4 text-right">
+	      <div class="col-xs-6 col-sm-4 text-right">
 	        <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
 	      </div>
 	      <p class="notice"><%= notice %></p>

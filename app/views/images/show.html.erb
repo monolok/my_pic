@@ -12,24 +12,25 @@
 
 <%if @image.active == false %>
   <section id="content-details" class="row clearfix center" style="color: black;">
-    <i class="fa fa-copyright">Image owned by <%= @image.e_mail%></i>
+    <i class="fa fa-copyright">Image owned by <%= mail_to @image.e_mail%></i>
   </section>
 <%else%>
   <section id="content-details" class="row clearfix" style="color: black;">
     <article id="details-article" class="col-sm-8">
-      <h1 id="article-title">Image name <span class="font-weight-light">City/country</span></h1>
-  	  <p>1-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia.</p>
+      <h1 id="article-title"><%= @image.name%></h1>
+      <small><em><%=@image.city%></em></small>
+  	  <p><%= @image.description1%></p>
 
-      <p>2-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia.</p>
+      <p><%= @image.description2%></p>
+
       <p><strong>Tags:</strong></p>
-      <ul class="no-indent">
-  	    <li>blablabla</li>
-  	    <li>blablabla</li>
-  	    <li>blablabla</li>
-        <li>blablabla</li>
-      </ul>
+
+        <ul class="no-indent">
+        <% @image.tags.each do |tag|%>
+    	    <li><%= tag.name%></li>
+        <%end%>
+        </ul>
+
     </article>
     <aside id="details-aside" class="col-sm-4">
       <%= render "image_show", image: @image, order_item: @order_item %>
