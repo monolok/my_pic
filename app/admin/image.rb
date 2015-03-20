@@ -8,6 +8,20 @@ ActiveAdmin.register Image do
     column :active
   end
 
+  show do
+    h3 image.name
+    h4 image.city
+    div image.price
+    div image.active
+    div image.description1
+    div image.description2
+    ul do
+      image.tags.each do |tag|
+        li tag.name
+      end
+    end
+  end
+
   form do |f|
     f.inputs do 
       f.semantic_errors # shows errors on :base
@@ -58,6 +72,17 @@ ActiveAdmin.register Image do
         end
       end
     end
+
+    def destroy
+      @image = Image.find(params[:id])
+      @image.tags.destroy_all
+      @image.destroy
+      respond_to do |format|
+        format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    end
+    
     private
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
