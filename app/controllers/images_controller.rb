@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :_show_image]
-
+  before_action :authenticate_user!, except: [:index, :show, :_show_image]
   # GET /images
   # GET /images.json
   def index
@@ -22,9 +22,10 @@ class ImagesController < ApplicationController
     send_data(Base64.decode64(@image.data), :type => @image.mime_type, :filename => @image.filename, :disposition => 'inline')
   end
   # GET /images/new
-  # def new
-  #   @image = Image.new
-  # end
+  def new
+    @image = Image.new
+    @image.tags.build
+  end
 
   # GET /images/1/edit
   def edit
@@ -32,25 +33,30 @@ class ImagesController < ApplicationController
 
   # POST /images
   # POST /images.json
-  # def create
-  #   @image = Image.new(params['data']) do |t|
-  #       t.data = Base64.encode64(params[:image][:data].read)
-  #       t.filename = params[:image][:data].original_filename
-  #       t.mime_type = params[:image][:data].content_type
-  #   end
-  #   @image.name = image_params['name']
-  #   @image.price = image_params['price']
-  #   @image.active = true
-  #   respond_to do |format|
-  #     if @image.save
-  #       format.html { redirect_to @image, notice: 'Image was successfully created.' }
-  #       format.json { render :show, status: :created, location: @image }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @image.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def create
+    @image = Image.new(image_params) do |t|
+        t.data = Base64.encode64(params[:image][:data].read)
+        t.filename = params[:image][:data].original_filename
+        t.mime_type = params[:image][:data].content_type
+    end
+    # @image.name = image_params['name']
+    # @image.price = image_params['price']
+    # @image.city = image_params['city']
+    # @image.description1 = image_params['description1']
+    # @image.description2 = image_params['description2']        
+    @image.active = true
+    @image.user_id = current_user.id
+    @image.e_mail = current_user.email
+    respond_to do |format|
+      if @image.save
+        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.json { render :show, status: :created, location: @image }
+      else
+        format.html { render :new }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
@@ -68,14 +74,14 @@ class ImagesController < ApplicationController
 
   # DELETE /images/1
   # DELETE /images/1.json
-  # def destroy
-  #   @image.tags.destroy_all
-  #   @image.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @image.tags.destroy_all
+    @image.destroy
+    respond_to do |format|
+      format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -85,6 +91,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:name, :price)
+      params.require(:image).permit(:name, :price, :city, :description1, :description2, tags_attributes: [:id, :name])
     end
 end

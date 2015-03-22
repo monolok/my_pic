@@ -3,7 +3,7 @@
 	<%=link_to image_tag(url_for(:controller => 'images', :action => '_show_image', :id => image.id), class: "pad-bot1 img-rounded"), image %> 
 	<%if image.active == false%>
 		<div class="text-muted mark">
-			<i class="fa fa-copyright"></i><strong>Copyright sold</strong>	
+			<i class="fa fa-copyright"></i><strong>Copyright not available</strong>	
 		</div>
 	<%else%>
 		<div class="text-success mark">

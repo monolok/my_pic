@@ -19,6 +19,7 @@
     <article id="details-article" class="col-sm-8">
       <h1 id="article-title"><%= @image.name%></h1>
       <small><em><%=@image.city%></em></small>
+
   	  <p><%= @image.description1%></p>
 
       <p><%= @image.description2%></p>
@@ -36,8 +37,8 @@
       <%= render "image_show", image: @image, order_item: @order_item %>
 
   	  <ul id="details-infobox" class="list-group">
-  	    <li class="list-group-item active clearfix">DETAILS</li>
-  	    <li class="list-group-item">Copyright ownership</li>
+  	    <li class="list-group-item active clearfix">Own by</li>
+  	    <li class="list-group-item"><%= @image.e_mail%></li>
   	    <li class="list-group-item clearfix">
   	      <span class="pull-left content-qualifier"><i class="fa fa-copyright"></i><strong>Copyright</strong></span>
           <%if @image.active == false%>

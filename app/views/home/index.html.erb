@@ -1,10 +1,23 @@
 
 	<div class="row center">
-		<%= link_to do%>
-			<i class="fa fa-sign-in fa-3x">Log in !</i>
-		<%end%>
-		<%= link_to do%>
-			<i class="fa fa-rocket fa-3x">Start Selling !</i>
+		<%if user_signed_in?%>
+			<div class="user-signed">
+				<%= link_to edit_user_registration_path do%>
+					<i class="fa fa-user fa-3x"></i>
+				<%end%>
+				<%= link_to destroy_user_session_path, :method => :delete do%>
+					<i class="fa fa-sign-out fa-3x"></i>
+				<%end%>		
+			</div>	
+		<%else%>
+			<div class="no-user">
+				<%= link_to new_user_session_path do%>
+					<i class="fa fa-sign-in fa-3x">Log in !</i>
+				<%end%>
+				<%= link_to new_user_registration_path do%>
+					<i class="fa fa-rocket fa-3x">Start Selling !</i>
+				<%end%>			
+			</div>
 		<%end%>
 	</div>
 	<div class="row bg">

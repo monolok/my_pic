@@ -16,6 +16,10 @@
     <%= f.text_field :name, class: "form-control1" %>
   </div> 
   <div>
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>  
+  <div>
     <%= f.label :data %><br>
     <%= f.file_field :data %>
   </div>
@@ -23,7 +27,24 @@
     <%= f.label :price %><br>
     <%= f.number_field :price %>
   </div>
+  <div>
+    <%= f.label :description1 %><br>
+    <%= f.text_area :description1 %>
+  </div>
+  <div>
+    <%= f.label :description2 %><br>
+    <%= f.text_area :description2 %>
+  </div> 
 
+  <div>
+    <h3>Tags</h3>
+    <%= f.fields_for :tags do |tag|%>
+      <%= render 'tag_fields', :f => tag%>      
+    <div>
+      <%= link_to_add_association 'add tag', f, :tags %>
+    </div>
+    <%end%>
+  </div> 
 
   <div class="actions">
     <%= f.submit %>

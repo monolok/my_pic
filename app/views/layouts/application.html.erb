@@ -13,10 +13,16 @@
 	        <h1><%= link_to "PicMe", root_path %></h1>
 			<%= link_to images_path do%>
 				<i class="fa fa-search fa-2x"></i>
-			<%end%>	 
-			<%= link_to admin_root_path do%>
-				<i class="fa fa-plus-square"></i>
-			<%end%>		       
+			<%end%>	
+			<%if user_signed_in?%>
+				<%= link_to new_image_path do%>
+					<i class="fa fa-plus-square"></i>
+				<%end%>
+			<%else%> 
+				<%= link_to admin_root_path do%>
+					<i class="fa fa-plus-square"></i>
+				<%end%>	
+			<%end%>	       
 	      </div>
 	      <div class="col-xs-6 col-sm-4" id="search_box">
 	      	<%= form_tag search_images_path, method: :get, class: "", role: "search" do %>

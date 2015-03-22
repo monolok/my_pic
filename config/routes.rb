@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { sessions: "users/sessions" }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'order_items/create'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
 
 root 'home#index'
 
-  resources :images, except: [:new, :edit, :create, :update] do 
+  resources :images do 
     collection do 
       get 'search'
       get 'img/:id', to: "images#_show_image"
