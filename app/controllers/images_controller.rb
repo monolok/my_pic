@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = Image.where(admin_ok: true)
   end
 
   def search
@@ -45,6 +45,7 @@ class ImagesController < ApplicationController
     # @image.description1 = image_params['description1']
     # @image.description2 = image_params['description2']        
     @image.active = true
+    @image.admin_ok = false
     @image.user_id = current_user.id
     @image.e_mail = current_user.email
     respond_to do |format|
