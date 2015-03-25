@@ -35,11 +35,7 @@
     </article>
     <aside id="details-aside" class="col-sm-4">
       <div>
-        <div class="input-group">
-          <div class="input-group-btn">
-              <%= link_to "Add to Cart", root_path, class: "btn btn-success btn-lg btn-block", id: "btn-buy" %>
-          </div>
-        </div>
+      <%= render "stripe", image: @image %>
       </div>
 
   	  <ul id="details-infobox" class="list-group">
