@@ -12,10 +12,12 @@ class ImagesController < ApplicationController
     render action: :index
   end
 
+  def payment
+    
+  end
   # GET /images/1
   # GET /images/1.json
   def show
-    @order_item = current_order.order_items.new
   end
 
   def _show_image

@@ -3,17 +3,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions", omniauth_callbacks: "users/omniauth_callbacks" }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'order_items/create'
-
-  get 'order_items/update'
-
-  get 'order_items/destroy'
-
-  get 'carts/show'
-
-  post 'carts/create_payment'
-
-  get 'carts/create_payment'
 
 root 'home#index'
 
@@ -21,11 +10,11 @@ root 'home#index'
     collection do 
       get 'search'
       get 'img/:id', to: "images#_show_image"
+      get 'payment'
+      post 'payment'
     end
 
   end
-  resource :cart, only: [:show, :create_payment]
-  resources :order_items, only: [:create, :update, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

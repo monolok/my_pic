@@ -34,7 +34,13 @@
 
     </article>
     <aside id="details-aside" class="col-sm-4">
-      <%= render "image_show", image: @image, order_item: @order_item %>
+      <div>
+        <div class="input-group">
+          <div class="input-group-btn">
+              <%= link_to "Add to Cart", root_path, class: "btn btn-success btn-lg btn-block", id: "btn-buy" %>
+          </div>
+        </div>
+      </div>
 
   	  <ul id="details-infobox" class="list-group">
   	    <li class="list-group-item active clearfix">Own by</li>
