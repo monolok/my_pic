@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :_show_image]
-  before_action :authenticate_user!, except: [:index, :show, :_show_image]
+  before_action :authenticate_user!, except: [:index, :show, :_show_image, :payment]
   # GET /images
   # GET /images.json
   def index
@@ -13,11 +13,36 @@ class ImagesController < ApplicationController
   end
 
   def payment
-    
+  Stripe.api_key = Devise.omniauth_configs[:stripe_connect].strategy.client_secret
+  # Amount in cents
+    @amount = Image.find(params[:id]).price.to_i * 100
+  # Get the credit card details submitted by the form
+    token = params[:stripeToken]
+
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :description => 'Copyright purchase'
+    )
+  # Create the charge on Stripe's servers - this will charge the user's card
+    charge = Stripe::Charge.create({
+        :amount => @amount, # amount in cents
+        :currency => "usd",
+        :source => token,
+        :description => "Fee paid for #{Image.find(params[:id]).name}",
+        :application_fee => 500 # amount in cents
+      },
+      {:stripe_account => Image.find(params[:id]).user.uid}
+    )
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to charges_path
+
   end
   # GET /images/1
   # GET /images/1.json
   def show
+
   end
 
   def _show_image

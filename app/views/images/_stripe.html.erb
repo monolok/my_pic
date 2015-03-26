@@ -1,6 +1,11 @@
 <!-- image = @image -->
 <div class="input-group">
   <div class="input-group-btn">
-      <%= link_to "Add to Cart", root_path, class: "btn btn-success btn-lg btn-block", id: "btn-buy" %>
+	<%= form_tag "/images/payment/#{params[:id]}" do %>
+	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	          data-key="<%= image.user.publishable_key %>"
+	          data-description="Own <%= image.name %>"
+	          data-amount="<%=image.price.to_i * 100%>"></script>
+	<% end %>
   </div>
 </div>

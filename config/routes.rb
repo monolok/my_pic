@@ -10,8 +10,8 @@ root 'home#index'
     collection do 
       get 'search'
       get 'img/:id', to: "images#_show_image"
-      get 'payment'
-      post 'payment'
+      get 'payment/:id', to: "images#payment"
+      post 'payment/:id', to: "images#payment"
     end
 
   end
