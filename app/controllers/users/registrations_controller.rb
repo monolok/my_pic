@@ -22,6 +22,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def active
+    @image = Image.find(params[:id])
+      if @image.active == true
+        @image.update(active: false)
+      else
+        @image.update(active: true)
+      end
+    redirect_to edit_user_registration_path
+  end
+
   # DELETE /resource
   def destroy
   current_user.images.destroy_all

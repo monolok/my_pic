@@ -33,7 +33,28 @@
 			<% end %>			
 	      </div>
 	      <div class="col-xs-6 col-sm-4 text-right">
-	        <h1 class="cart-text">sign </h1>	
+			<div class="row center">
+				<%if user_signed_in?%>
+					<div class="user-signed">
+						<%= link_to edit_user_registration_path do%>
+							<i class="fa fa-user fa-2x">Account</i>
+						<%end%>
+						<%= link_to destroy_user_session_path, :method => :delete do%>
+							<i class="fa fa-sign-out fa-2x">Sign out</i>
+						<%end%>		
+					</div>	
+				<%else%>
+					<div class="no-user">
+						<%= link_to new_user_session_path do%>
+							<i class="fa fa-sign-in fa-2x">Log in</i>
+						<%end%>
+						<%= link_to new_user_registration_path do%>
+							<i class="fa fa-rocket fa-2x">Get started</i>
+						<%end%>			
+					</div>
+				<%end%>
+			</div>
+<!-- 	        <h1 class="cart-text">sign </h1>	 -->
 	      </div>
 	      <p class="notice"><%= notice %></p>
        	  <p class="alert"><%= alert %></p>

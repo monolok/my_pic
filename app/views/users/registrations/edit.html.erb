@@ -1,49 +1,64 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row pad-bot">
+  <%if current_user.uid != nil%>
+    <p class="text-success">This account (<%= current_user.email%>) is succesfully connected to Stripe and can reveive payment</p>
+  <%else%>
+  <p class="text-danger">WARNING: <%= current_user.email %> account is not connected to stripe and therefor can not get paid, you need a stripe account</p>
+  <%= link_to "Connect to Stripe", user_omniauth_authorize_path(:stripe_connect), class: "btn btn-danger" %>
+  <%end%>  
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="row">
+  <div class="col-xs-6">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div> 
+
+        <div class="field">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Update" %>
+          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+        </div>
+      <% end %>  
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<%current_user.images.each do |img|%>
-  <%= img.name%>
-  <%= link_to image_path(img.id), method: :delete do%>
-    <i class="fa fa-trash"></i>
-  <%end%>
-<%end%>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<h3>Get paid for your pics</h3>
-<%= link_to image_tag('stripe.png'), user_omniauth_authorize_path(:stripe_connect) %>
-</br>
-<%= link_to "Back", :back %>
+  <div class="col-xs-6">
+      <h4>List of my images</h4>
+      <%if current_user.images.empty?%>
+        <mark>No images created yet</mark>
+      <%else%>
+        <%current_user.images.each do |img|%>
+          <%if img.active == false %>
+            <%= img.name%>
+            <%= link_to "Not on sell", "active/#{img.id}" %>
+          <%else%>
+            <%= link_to img.name, edit_image_path(img)%>
+            <%= link_to image_path(img.id), method: :delete do%>
+              <i class="fa fa-trash"></i>
+            <%end%>
+            <%= link_to "On sell", "active/#{img.id}" %>
+          <%end%>
+        <%end%>
+      <%end%>
+  </div>              
+</div>

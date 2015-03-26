@@ -1,34 +1,18 @@
-
-	<div class="row center">
-		<%if user_signed_in?%>
-			<div class="user-signed">
-				<%= link_to edit_user_registration_path do%>
-					<i class="fa fa-user fa-3x"></i>
-				<%end%>
-				<%= link_to destroy_user_session_path, :method => :delete do%>
-					<i class="fa fa-sign-out fa-3x"></i>
-				<%end%>		
-			</div>	
-		<%else%>
-			<div class="no-user">
-				<%= link_to new_user_session_path do%>
-					<i class="fa fa-sign-in fa-3x">Log in !</i>
-				<%end%>
-				<%= link_to new_user_registration_path do%>
-					<i class="fa fa-rocket fa-3x">Start Selling !</i>
-				<%end%>			
-			</div>
-		<%end%>
-	</div>
 	<div class="row bg">
-		<div class="col-xs-offset-2 col-xs-8 col-xs-offset-2">
+		<p class="center"><em>Web platform to buy, sell or protect your photograph</em></p>
+		<div class="col-xs-6">
 			<div class="row lead">
-				PicMe sells <div id="m" style="display: inline;">copyright ownership</div> of urban photograph to anybody who wishes to take over one or many photograph that you believe has potential to your conveniance.
+				<h3 class="center"><strong>What?</strong></h3>
+				<ul>
+					<li>Protect your <div id="m" style="display: inline;">copyright ownership</div></li>
+					<li>Purchase new copyright ownership from other users like you</li>
+					<li>Sell your copyright ownership to anybody who want your photograph</li>
+				</ul>
 			</div>
 		</div>
-		<div class="col-xs-offset-2 col-xs-8 col-xs-offset-2">
+		<div class="col-xs-6">
 			<div class="row">
-				<h3 class="center"><strong>How it works ?</strong></h3>
+				<h3 class="center"><strong>How?</strong></h3>
 				<table class="ex1">
 				  <tr>
 				    <td id="browse" class="pointer">
@@ -36,13 +20,13 @@
 				    		<i class="fa fa-search fa-5x" data-toggle="tooltip" data-placement="top" title="Start browsing pictures!"></i>
 				    	<%end%>
 				    </td>
-				    <td id="pic"><i class="fa fa-file-image-o fa-3x" data-toggle="tooltip" data-placement="top" title="Check the pic!"></i></td>
+				    <td id="cart"><i class="fa fa-cart-plus fa-3x" data-toggle="tooltip" data-placement="top" title="Buy THE photograph!"></i></td>
 				  </tr>
 				  <tr>
-				    <td id="cart"><i class="fa fa-cart-plus fa-3x" data-toggle="tooltip" data-placement="top" title="Add to your cart!"></i></td>
-				    <td id="copy"><i class="fa fa-copyright fa-3x" data-toggle="tooltip" data-placement="top" title="Own the pic !"></i></td>
+				    <td id="pic"><i class="fa fa-usd fa-3x" data-toggle="tooltip" data-placement="top" title="MyPic fee is 10% of the sell"></i></td>
+				    <td id="copy"><i class="fa fa-copyright fa-3x" data-toggle="tooltip" data-placement="top" title="Become the new owner!"></i></td>
 				  </tr>
-				</table>	
+				</table>
 			</div>						
 		</div>
 	</div>

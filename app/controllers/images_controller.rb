@@ -19,8 +19,14 @@ class ImagesController < ApplicationController
   # Get the credit card details submitted by the form
     token = params[:stripeToken]
 
+    if user_signed_in?
+      @email = current_user.email
+    else
+      @email = params[:stripeEmail]
+    end
+
     customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
+      :email => @email,
       :description => 'Copyright purchase'
     )
   # Create the charge on Stripe's servers - this will charge the user's card
@@ -29,16 +35,26 @@ class ImagesController < ApplicationController
         :currency => "usd",
         :source => token,
         :description => "Fee paid for #{Image.find(params[:id]).name}",
-        :application_fee => 500 # amount in cents
+        :application_fee => (0.10*@amount).to_i # amount in cents
       },
       {:stripe_account => Image.find(params[:id]).user.uid}
     )
 
+    @image = Image.find(params[:id])
+    @image.update(active: false)
+    @image.update(e_mail: @email)
+    if user_signed_in?
+      @image.update(user_id: current_user.id)
+    else
+      @image.update(user_id: nil)
+    end
+    
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to charges_path
 
   end
+
   # GET /images/1
   # GET /images/1.json
   def show

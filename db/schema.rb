@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325090057) do
+ActiveRecord::Schema.define(version: 20150326204349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20150325090057) do
     t.boolean  "active"
     t.string   "filename"
     t.string   "mime_type"
-    t.boolean  "in_cart"
     t.string   "data"
     t.string   "e_mail"
     t.string   "city"
