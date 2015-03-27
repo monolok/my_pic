@@ -1,11 +1,19 @@
 <!-- image = @image -->
+<%if user_signed_in?%>
+	<% @email = current_user.email%>
+<%else%>
+	<% @email = nil%>
+<%end%>
 <div class="input-group">
   <div class="input-group-btn">
 	<%= form_tag "/images/payment/#{params[:id]}" do %>
 	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 	          data-key="<%= image.user.publishable_key %>"
 	          data-description="Own <%= image.name %>"
-	          data-amount="<%=image.price.to_i * 100%>"></script>
+	          data-amount="<%=image.price.to_i * 100%>"
+	          data-email="<%= @email%>"
+			  data-allow-remember-me="false"
+	          ></script>
 	<% end %>
   </div>
 </div>
